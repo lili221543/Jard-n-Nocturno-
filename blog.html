@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Videos - Jardín Nocturno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+    }
+
+    header {
+      background-color: #2a2a2a;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      background-image: url('jalea.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #7fff90;
+      margin: 0;
+      background-color: rgba(28, 28, 28, 0.7);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1.1rem;
+      background-color: rgba(28, 28, 28, 0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      color: #7fff90;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 40px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: #7fff90;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .galeria-videos {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .video {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: aparecer 0.6s ease-out forwards;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .video:nth-child(1) { animation-delay: 0s; }
+    .video:nth-child(2) { animation-delay: 0.2s; }
+    .video:nth-child(3) { animation-delay: 0.4s; }
+    .video:nth-child(4) { animation-delay: 0.6s; }
+    .video:nth-child(5) { animation-delay: 0.8s; }
+    .video:nth-child(6) { animation-delay: 1s; }
+    .video:nth-child(7) { animation-delay: 1.2s; }
+    .video:nth-child(8) { animation-delay: 1.4s; }
+    .video:nth-child(9) { animation-delay: 1.6s; }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .video:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .video video {
+      width: 100%;
+      height: 180px; 
+      object-fit: cover; 
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background-color: black;
+      pointer-events: none; 
+    }
+
+    .video h3 {
+      color: #7fff90;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .video p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .testimonios {
+      max-width: 800px;
+      margin: 60px auto;
+      background-color: #2a2a2a;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      color: #ccc;
+    }
+
+    .testimonios h2 {
+      color: #7fff90;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .testimonial {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 15px;
+    }
+
+    .testimonial:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .testimonial strong {
+      color: #7fff90;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .testimonial p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ccc;
+      margin: 0;
+    }
+
+    .comentarios {
+      max-width: 800px;
+      margin: 60px auto 80px;
+      background-color: #2a2a2a;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      color: #ccc;
+    }
+
+    .comentarios h2 {
+      color: #7fff90;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .comentarios form input,
+    .comentarios form textarea {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+      border: none;
+      resize: none;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .comentarios form button.btn {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      background-color: #2a2a2a;
+    }
+
+    .cta h3 {
+      color: #7fff90;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #7fff90;
+      color: #1c1c1c;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #6ce682;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #2a2a2a;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      color: #aaa;
+    }
+
+    
+    .eliminarComentario {
+      background-color: #7fff90; 
+      color: #1c1c1c; 
+      border: none;
+      padding: 8px 18px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .eliminarComentario:hover {
+      background-color: #6ce682;
+      transform: scale(1.05);
+    }
+
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal video {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #7fff90;
+      background-color: black;
+    }
+
+    .modal .cerrar {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2.5rem;
+      color: #7fff90;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jardín Nocturno</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="galeria.html">Galería</a>
+      <a href="videos.html">Videos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Galería de Videos</h2>
+    <p>Sumérgete en el universo visual de nuestras plantas favoritas, bajo la luna y entre sombras encantadas.</p>
+  </section>
+
+  <section class="galeria-videos" id="galeriaVideos">
+    <div class="video" data-src="video 1.mp4">
+      <video muted src="video 1.mp4"></video>
+      <h3>🌿 Daniela Vargas – "Los arreglos florales de Jardin Nocturno son simplemente hermosos"</h3>
+      <p>Una exploración visual de esta flor que solo se abre cuando cae el sol.</p>
+    </div>
+    <div class="video" data-src="video 2.mp4">
+      <video muted src="video 2.mp4"></video>
+      <h3>💧"Cada semana, mi jarrón susurra por nuevas flores… y Jardín Nocturno responde con belleza hecha ramo" </h3>
+      <p>Descubre plantas bioluminiscentes y cómo usarlas en tu jardín nocturno.</p>
+    </div>
+    <div class="video" data-src="video 3.mp4">
+      <video muted src="video 3.mp4"></video>
+      <h3>✨ Valentina Cruz – "Ahora mi jardín se llena de mariposas y es mi lugar favorito para jugar"</h3>
+      <p>Un vistazo a sistemas modernos que cuidan tus plantas mientras duermes.</p>
+    </div>
+    <div class="video" data-src="video4.mp4">
+      <video muted src="video4.mp4"></video>
+      <h3>🌺 Isabela Fernández – "Aprendí a mimar mis plantas con los secretos de Jardín Nocturno"</h3>
+      <p>Consejos prácticos para mantener saludables tus plantas.</p>
+    </div>
+    <div class="video" data-src="video5.mp4">
+      <video muted src="video5.mp4"></video>
+      <h3>🌿Sebastián Méndez – "Jardín Nocturno convirtió mi espacio en mi rincón favorito del mundo" </h3>
+      <p>Ideas para crear espacios verdes perfectos para la noche.</p>
+    </div>
+    <div class="video" data-src="video6.mp4">
+      <video muted src="video6.mp4"></video>
+      <h3>🌱 Gabriela Morales – "Mi perrito es el más feliz en el jardín que transformaron para nosotros"</h3>
+      <p>Consejos prácticos para mantener saludables tus plantas que aman la oscuridad.</p>
+    </div>
+    
+    <div class="video" data-src="video7.mp4">
+      <video muted src="video7.mp4"></video>
+      <h3>🌸María López – "Transformación total: De jardín abandonado a un paraíso verde" </h3>
+      <p>Conoce los secretos y cuidados de esta planta mística.</p>
+    </div>
+    <div class="video" data-src="video8.mp4">
+      <video muted src="video8.mp4"></video>
+      <h3>✨💧 Camila Rojas – "Mis plantas están más verdes y saludables que nunca, gracias a Jardín Nocturno"</h3>
+      <p>Ideas para integrar luces naturales en tu jardín hermoso.</p>
+    </div>
+    <div class="video" data-src="video9.mp4">
+      <video muted src="video9.mp4"></video>
+      <h3>🌙 Lucía Herrera – "Aprendí que regar bien es darle vida a cada planta… gracias a Jardín Nocturno"</h3>
+      <p>Descubre las flores que te llenan de fragancias únicas.</p>
+    </div>
+  </section>
+
+  <section class="testimonios">
+    <h2>Testimonios de Clientes</h2>
+    <div class="testimonial">
+      <strong>María G.</strong>
+      <p>Estoy encantada con el diseño personalizado que hicieron en mi jardín. Realmente capturaron la esencia de lo que quería.</p>
+    </div>
+    <div class="testimonial">
+      <strong>Carlos P.</strong>
+      <p>El mantenimiento nocturno es increíble. Mis plantas están más sanas y el jardín se ve mágico cada noche.</p>
+    </div>
+    <div class="testimonial">
+      <strong>Lucía R.</strong>
+      <p>Compré varias plantas únicas aquí y han sido el toque especial que mi casa necesitaba. ¡Muy recomendados!</p>
+    </div>
+  </section>
+
+  <section class="comentarios">
+    <h2>📝 Deja tu comentario</h2>
+    <form id="formComentario">
+      <input type="text" id="nombre" placeholder="Tu nombre" required />
+      <textarea id="comentario" placeholder="Escribe tu comentario aquí" required rows="4"></textarea>
+      <button type="submit" class="btn">Enviar comentario</button>
+    </form>
+    <div id="listaComentarios"></div>
+  </section>
+
+  <section class="cta">
+    <h3>¿Quieres compartir tu propio video?</h3>
+    <a href="contacto.html" class="btn">Contáctanos</a>
+  </section>
+
+  <footer>
+    © 2025 Jardín Nocturno. Todos los derechos reservados.
+  </footer>
+
+  
+  <div class="modal" id="modalVideo">
+    <span class="cerrar" id="cerrarModal">&times;</span>
+    <video id="videoGrande" controls></video>
+  </div>
+
+  <script>
+    
+    const videos = document.querySelectorAll('.galeria-videos .video');
+    const modal = document.getElementById('modalVideo');
+    const videoGrande = document.getElementById('videoGrande');
+    const cerrarModal = document.getElementById('cerrarModal');
+
+    videos.forEach(videoDiv => {
+      videoDiv.addEventListener('click', () => {
+        const src = videoDiv.getAttribute('data-src');
+        videoGrande.src = src;
+        modal.classList.add('active');
+        videoGrande.play();
+      });
+    });
+
+    cerrarModal.addEventListener('click', () => {
+      modal.classList.remove('active');
+      videoGrande.pause();
+      videoGrande.currentTime = 0;
+      videoGrande.src = '';
+    });
+
+    
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        cerrarModal.click();
+      }
+    });
+
+    
+    const formComentario = document.getElementById('formComentario');
+    const listaComentarios = document.getElementById('listaComentarios');
+
+    
+    let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+
+    function mostrarComentarios() {
+      listaComentarios.innerHTML = '';
+      comentarios.forEach((comentario, index) => {
+        const div = document.createElement('div');
+        div.classList.add('testimonial');
+        div.innerHTML = `
+          <strong>${comentario.nombre}</strong>
+          <p>${comentario.texto}</p>
+          <button class="eliminarComentario">Eliminar</button>
+        `;
+        
+        div.querySelector('.eliminarComentario').addEventListener('click', () => {
+          comentarios.splice(index, 1);
+          guardarComentarios();
+          mostrarComentarios();
+        });
+        listaComentarios.appendChild(div);
+      });
+    }
+
+    function guardarComentarios() {
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+    }
+
+    formComentario.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const texto = document.getElementById('comentario').value.trim();
+
+      if(nombre && texto) {
+        comentarios.push({ nombre, texto });
+        guardarComentarios();
+        mostrarComentarios();
+        formComentario.reset();
+      }
+    });
+
+    mostrarComentarios();
+  </script>
+</body>
+</html> 

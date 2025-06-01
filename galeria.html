@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galería - Jardín Nocturno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+    }
+
+    header {
+      background-color: #2a2a2a;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      background-image: url('jalea.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #7fff90;
+      margin: 0;
+      background-color: rgba(28,28,28,0.7);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+      background-color: rgba(28,28,28,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      color: #7fff90;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 40px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: #7fff90;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .galeria {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .imagen {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, border 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: aparecer 0.6s ease-out forwards;
+    }
+
+    .imagen:nth-child(1) { animation-delay: 0s; }
+    .imagen:nth-child(2) { animation-delay: 0.2s; }
+    .imagen:nth-child(3) { animation-delay: 0.4s; }
+    .imagen:nth-child(4) { animation-delay: 0.6s; }
+    .imagen:nth-child(5) { animation-delay: 0.8s; }
+    .imagen:nth-child(6) { animation-delay: 1s; }
+    .imagen:nth-child(7) { animation-delay: 1.2s; }
+    .imagen:nth-child(8) { animation-delay: 1.4s; }
+    .imagen:nth-child(9) { animation-delay: 1.6s; }
+    .imagen:nth-child(10) { animation-delay: 1.8s; }
+    .imagen:nth-child(11) { animation-delay: 2s; }
+    .imagen:nth-child(12) { animation-delay: 2.2s; }
+    .imagen:nth-child(13) { animation-delay: 2.4s; }
+    .imagen:nth-child(14) { animation-delay: 2.6s; }
+    .imagen:nth-child(15) { animation-delay: 2.8s; }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .imagen:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      background-color: #3b3b3b;
+      border: 2px solid #7fff90;
+    }
+
+    .imagen img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .imagen h3 {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #7fff90;
+    }
+
+    .imagen button {
+      margin-top: 10px;
+      background-color: transparent;
+      color: #7fff90;
+      border: 1px solid #7fff90;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .imagen button:hover {
+      background-color: #7fff90;
+      color: #1c1c1c;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      background-color: #2a2a2a;
+    }
+
+    .cta h3 {
+      color: #7fff90;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #7fff90;
+      color: #1c1c1c;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #6ce682;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #2a2a2a;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      color: #aaa;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-content {
+      background-color: #2a2a2a;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 15px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      max-width: 700px;
+      color: #f0f0f0;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .modal-img {
+      width: 100%;
+      max-width: 280px;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .modal-info {
+      flex: 1;
+    }
+
+    .modal-info h2 {
+      color: #7fff90;
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    .modal-info p {
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #7fff90;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jardín Nocturno</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="galeria.html">Galería</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Galería</h2>
+    <p>Descubre nuestros jardines en su esplendor nocturno, donde la naturaleza cobra vida bajo las estrellas.</p>
+  </section>
+
+  <section class="galeria">
+    <div class="imagen">
+      <img src="Planta1.jpeg" alt="Flor Luna">
+      <h3>Flor Luna</h3>
+      <button onclick="mostrarModal('Planta1.jpeg', 'Flor Luna', 'Una flor que florece únicamente bajo la luz de la luna, emitiendo un tenue resplandor.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta2.jpeg" alt="Orquídea Nocturna">
+      <h3>Orquídea Nocturna</h3>
+      <button onclick="mostrarModal('Planta2.jpeg', 'Orquídea Nocturna', 'Destaca por su aroma dulce que sólo se percibe de noche.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta3.jpeg" alt="Hiedra de Sombra">
+      <h3>Hiedra de Sombra</h3>
+      <button onclick="mostrarModal('Planta3.jpeg', 'Hiedra de Sombra', 'Se enrolla silenciosa entre las piedras y absorbe la humedad de la noche.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta4.jpeg" alt="Lirio Estelar">
+      <h3>Lirio Estelar</h3>
+      <button onclick="mostrarModal('Planta4.jpeg', 'Lirio Estelar', 'Sus pétalos reflejan la luz de las estrellas creando un efecto mágico.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta5.jpeg" alt="Musgo Brillante">
+      <h3>Musgo Brillante</h3>
+      <button onclick="mostrarModal('Planta5.jpeg', 'Musgo Brillante', 'Tapiza el suelo con un verde fosforescente que guía el camino.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta6.jpeg" alt="Niebla Violeta">
+      <h3>Niebla Violeta</h3>
+      <button onclick="mostrarModal('Planta6.jpeg', 'Niebla Violeta', 'Sus hojas liberan una bruma aromática cuando cae el rocío.')">Leer más</button>
+    </div>
+
+  
+    <div class="imagen">
+      <img src="Planta7.jpeg" alt="Azucena Crepuscular">
+      <h3>Azucena Crepuscular</h3>
+      <button onclick="mostrarModal('Planta7.jpeg', 'Azucena Crepuscular', 'Florece al anochecer, despidiendo un perfume relajante que calma los sentidos.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta8.jpeg" alt="Loto de Medianoche">
+      <h3>Loto de Medianoche</h3>
+      <button onclick="mostrarModal('Planta8.jpeg', 'Loto de Medianoche', 'Sus pétalos oscuros se abren lentamente bajo el cielo estrellado.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta9.jpeg" alt="Bambú Fantasma">
+      <h3>Bambú Fantasma</h3>
+      <button onclick="mostrarModal('Planta9.jpeg', 'Bambú Fantasma', 'Sus tallos pálidos crujen suavemente con la brisa nocturna.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta10.jpeg" alt="Helecho de Niebla">
+      <h3>Helecho de Niebla</h3>
+      <button onclick="mostrarModal('Planta10.jpeg', 'Helecho de Niebla', 'Aparece cubierto de pequeñas gotas de rocío brillante al amanecer.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta11.jpeg" alt="Campanillas Silenciosas">
+      <h3>Campanillas Silenciosas</h3>
+      <button onclick="mostrarModal('Planta11.jpeg', 'Campanillas Silenciosas', 'Emiten un leve tintineo cuando se mecen con el viento.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta12.jpeg" alt="Flor del Eclipse">
+      <h3>Flor del Eclipse</h3>
+      <button onclick="mostrarModal('Planta12.jpeg', 'Flor del Eclipse', 'Solo se abre completamente durante la luna nueva.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta13.jpeg" alt="Aura de Lavanda">
+      <h3>Aura de Lavanda</h3>
+      <button onclick="mostrarModal('Planta13.jpeg', 'Aura de Lavanda', 'Rodeada por un halo púrpura que parece flotar sobre sus hojas.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta14.jpeg" alt="Trébol Onírico">
+      <h3>Trébol Onírico</h3>
+      <button onclick="mostrarModal('Planta14.jpeg', 'Trébol Onírico', 'Dicen que quien lo encuentra, sueña con el futuro esa noche.')">Leer más</button>
+    </div>
+    <div class="imagen">
+      <img src="Planta15.jpeg" alt="Espina Cristalina">
+      <h3>Espina Cristalina</h3>
+      <button onclick="mostrarModal('Planta15.jpeg', 'Espina Cristalina', 'Sus bordes brillan como cristales bajo la luz lunar.')">Leer más</button>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h3>¿Quieres un jardín igual de mágico?</h3>
+    <a href="contacto.html" class="btn">Contáctanos</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Jardín Nocturno. Todos los derechos reservados.
+  </footer>
+
+  
+  <div id="modal" class="modal" onclick="cerrarModal(event)">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal(event)">&times;</span>
+      <img id="modal-img" class="modal-img" src="" alt=""/>
+      <div class="modal-info">
+        <h2 id="modal-titulo"></h2>
+        <p id="modal-descripcion"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarModal(imgSrc, titulo, descripcion) {
+      document.getElementById('modal-img').src = imgSrc;
+      document.getElementById('modal-img').alt = titulo;
+      document.getElementById('modal-titulo').textContent = titulo;
+      document.getElementById('modal-descripcion').textContent = descripcion;
+      document.getElementById('modal').style.display = 'block';
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function cerrarModal(event) {
+      if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+        document.getElementById('modal').style.display = 'none';
+        document.body.style.overflow = ''; 
+      }
+    }
+  </script>
+</body>
+</html>  
