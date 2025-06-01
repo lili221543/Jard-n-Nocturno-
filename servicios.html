@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios - Jardín Nocturno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+    }
+
+    header {
+      background-color: #2a2a2a;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      background-image: url('jalea.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #7fff90;
+      margin: 0;
+      background-color: rgba(28,28,28,0.7);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+      background-color: rgba(28,28,28,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      color: #7fff90;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 40px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: #7fff90;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .servicios {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .servicio {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, border 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: aparecer 0.6s ease-out forwards;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .servicio:nth-child(2) { animation-delay: 0.2s; }
+    .servicio:nth-child(3) { animation-delay: 0.4s; }
+    .servicio:nth-child(4) { animation-delay: 0.6s; }
+    .servicio:nth-child(5) { animation-delay: 0.8s; }
+    .servicio:nth-child(6) { animation-delay: 1s; }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .servicio:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      background-color: #3b3b3b;
+      border: 2px solid #7fff90;
+    }
+
+    .servicio h3 {
+      color: #7fff90;
+      margin-top: 0;
+      font-size: 1.4rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .servicio p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+      flex-grow: 1;
+    }
+
+    .btn-servicio {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #7fff90;
+      color: #1c1c1c;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-servicio:hover {
+      background-color: #6ce682;
+      transform: scale(1.05);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      background-color: #2a2a2a;
+    }
+
+    .cta h3 {
+      color: #7fff90;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #7fff90;
+      color: #1c1c1c;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #6ce682;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #2a2a2a;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jardín Nocturno</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="galeria.html">Galería</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Servicios</h2>
+    <p>Creamos jardines con alma, para que la naturaleza también viva de noche.</p>
+  </section>
+
+  <section class="servicios">
+    <div class="servicio">
+      <h3>🌿 Diseño de jardines oníricos</h3>
+      <p>Transformamos cualquier espacio en un oasis nocturno, mezclando plantas, luz y texturas que evocan la calma del crepúsculo.</p>
+      <a href="contacto.html" class="btn-servicio">Solicitar este servicio</a>
+    </div>
+    <div class="servicio">
+      <h3>💧 Sistemas de riego inteligente</h3>
+      <p>Instalamos sistemas automatizados que cuidan tus plantas mientras tú descansas, ajustados a las necesidades de cada rincón verde.</p>
+      <a href="contacto.html" class="btn-servicio">Solicitar este servicio</a>
+    </div>
+    <div class="servicio">
+      <h3>🪴 Mantenimiento personalizado</h3>
+      <p>Poda, limpieza, fertilización y control de plagas, todo con un enfoque artesanal y respetuoso con el ecosistema.</p>
+      <a href="contacto.html" class="btn-servicio">Solicitar este servicio</a>
+    </div>
+    <div class="servicio">
+      <h3>🎍 Ambientación para eventos</h3>
+      <p>Diseñamos jardines efímeros para bodas, fiestas y ceremonias: naturaleza viva que florece por una noche mágica.</p>
+      <a href="contacto.html" class="btn-servicio">Solicitar este servicio</a>
+    </div>
+    <div class="servicio">
+      <h3>🌸 Asesoramiento botánico</h3>
+      <p>Te guiamos en la elección y cuidado de tus plantas, según tu estilo, el clima y la luz disponible.</p>
+      <a href="contacto.html" class="btn-servicio">Solicitar este servicio</a>
+    </div>
+    <div class="servicio">
+      <h3>🧪 Microjardines experimentales</h3>
+      <p>Explora lo insólito con nuestros mini jardines conceptuales: terrarios, jardines verticales, y piezas botánicas de colección.</p>
+      <a href="contacto.html" class="btn-servicio">Solicitar este servicio</a>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h3>¿Listo para transformar tu jardín?</h3>
+    <a href="contacto.html" class="btn">Solicita tu presupuesto</a>
+  </section>
+
+  <footer>
+    © 2025 Jardín Nocturno. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
